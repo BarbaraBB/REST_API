@@ -27,9 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# Site ID
-
-SITE_ID = 1
 
 # Application definition
 
@@ -137,3 +134,16 @@ STATIC_URL = '/static/'
 REST_AUTH_SERIALIZERS = {
     'LOGIN_SERIALIZER': 'api.serializers.LoginSerializer',
     }
+
+
+REST_AUTH_REGISTER_SERIALIZERS = {
+        'REGISTER_SERIALIZER': 'api.serializers.RegisterSerializer',
+}
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+REST_SESSION_LOGIN = False
+SITE_ID = 1
+
+
+
+ACCOUNT_USERNAME_REQUIRED = False

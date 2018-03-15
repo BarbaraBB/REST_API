@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'rest_auth.registration',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',
+    'allauth.socialaccount'
+
 
 ]
 
@@ -141,7 +142,7 @@ REST_AUTH_REGISTER_SERIALIZERS = {
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-REST_SESSION_LOGIN = False
+REST_SESSION_LOGIN = True
 SITE_ID = 1
 
 

@@ -26,7 +26,8 @@ from rest_auth.registration.views import (
     RegisterView
 )
 router= routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
+router.register('users', views.UserViewSet)
+
 
 
 

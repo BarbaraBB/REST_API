@@ -20,7 +20,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('username', 'email')
 
 class LoginSerializer(serializers.Serializer):
-    username = serializers.CharField(required=False, allow_blank=True)
+    
     email = serializers.EmailField(required=False, allow_blank=True)
     password = serializers.CharField(style={'input_type': 'password'})
 

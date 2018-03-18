@@ -99,3 +99,12 @@ class UsersViewSetTestCase(APITestCase):
     def test_users_list(self):
         response = self.client.get(self.url, format='json')
         self.assertEqual(response.status_code, 200)
+
+class LoggedUserViewTestCase(APITestCase):
+    url = reverse('user-detail', args=['me'])
+
+    def test_users_me(self):
+        user = User.objects.create_user('test', 'test@test.com', 'test_password')
+        self.client.login(username='test', password='test_password')
+        response = self.client.get(self.url, format='json')
+        self.assertEqual(response.status_code, 200)

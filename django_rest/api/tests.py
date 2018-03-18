@@ -21,7 +21,7 @@ class LoginViewTestCase(APITestCase):
         response = self.client.post(self.url, {"email": self.email})
         self.assertEqual(400, response.status_code)
 
-    def test_login_with_wrong_password(self):
+    def test_login_with_invalid_password(self):
         response = self.client.post(self.url, {"email": self.email, "password": "testtest2"})
         self.assertEqual(400, response.status_code)
 
@@ -29,3 +29,17 @@ class LoginViewTestCase(APITestCase):
         response = self.client.post(self.url, {"email": self.email, "password": self.password})
         self.assertEqual(200, response.status_code)
         self.assertTrue("key" in json.loads(response.content))
+
+class RegisterViewTestCase(APITestCase):
+    url = reverse("rest_register")
+
+    def test_register_with_invalid_password_repeat(self):
+        user_data = {
+            "username": "test",
+            "email": "test@test.com",
+            "password1": "testtest1",
+            "password2": "testtest2"
+            }
+
+        response = self.client.post(self.url, user_data)
+        self.assertEqual(400, response.status_code)

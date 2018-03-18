@@ -87,3 +87,15 @@ class RegisterViewTestCase(APITestCase):
 
         response = self.client.post(self.url, user_data2)
         self.assertEqual(400, response.status_code)
+
+class UsersViewSetTestCase(APITestCase):
+    url = reverse('user-list')
+
+    def setUp(self):
+        self.test_user1 = User.objects.create_user(username='test_user1', email='test_user1@test.com',password='test_password1')
+        self.test_user2 = User.objects.create_user(username='test_user2', email='test_user2@test.com',password='test_password2')
+
+
+    def test_users_list(self):
+        response = self.client.get(self.url, format='json')
+        self.assertEqual(response.status_code, 200)

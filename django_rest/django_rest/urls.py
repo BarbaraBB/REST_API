@@ -26,7 +26,7 @@ from rest_auth.registration.views import (
     RegisterView
 )
 router= routers.DefaultRouter()
-router.register('users', views.UserViewSet)
+router.register('users', views.UserViewSet, 'user')
 
 
 
@@ -39,5 +39,6 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls',namespace='rest_framework')),
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
     path('rest-auth/', include('rest_auth.urls')),
-    path('', include(router.urls)),
 ]
+
+urlpatterns += router.urls

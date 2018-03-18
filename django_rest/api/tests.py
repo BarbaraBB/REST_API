@@ -43,3 +43,15 @@ class RegisterViewTestCase(APITestCase):
 
         response = self.client.post(self.url, user_data)
         self.assertEqual(400, response.status_code)
+
+    def test_register_with_valid_data(self):
+        user_data = {
+            "username": "test",
+            "email": "test@test.com",
+            "password1": "testtest1",
+            "password2": "testtest1"
+            }
+
+        response = self.client.post(self.url, user_data)
+        self.assertEqual(201, response.status_code)
+        self.assertTrue("key" in json.loads(response.content))

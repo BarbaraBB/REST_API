@@ -136,7 +136,7 @@ STATIC_URL = '/static/'
 # rest_auth
 REST_AUTH_SERIALIZERS = {
     'LOGIN_SERIALIZER': 'api.serializers.LoginSerializer',
-    }
+}
 
 
 REST_AUTH_REGISTER_SERIALIZERS = {
@@ -151,7 +151,7 @@ SITE_ID = 1
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
-
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 #Following is added to enable registration with email instead of username
 AUTHENTICATION_BACKENDS = (

@@ -17,32 +17,22 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from api import views
+from api.views import MyLoginView, MyRegisterView
 
-from rest_auth.views import (
-    LoginView
-)
-
-from rest_auth.registration.views import (
-    RegisterView
-)
-
-from rest_framework_swagger.renderers import SwaggerUIRenderer, OpenAPIRenderer
-from rest_framework.schemas import get_schema_view
+from rest_framework_swagger.views import get_swagger_view
 
 router= routers.DefaultRouter()
 router.register('users', views.UserViewSet, 'user')
-schema_view = get_schema_view(title='API Documentation', renderer_classes=[OpenAPIRenderer, SwaggerUIRenderer])
 
-
-
+schema_view = get_swagger_view(title='API Documentation')
 
 urlpatterns = [
-    path('', schema_view, name="docs"),
+    path('', schema_view),
     path('admin/', admin.site.urls),
-    path('login/', LoginView.as_view(), name='rest_login'),
-    path('register/', RegisterView.as_view(), name='rest_register'),
+    path('login/', MyLoginView.as_view(), name='rest_login'),
+    path('register/', MyRegisterView.as_view(), name='rest_register'),
     path('api-auth/', include('rest_framework.urls',namespace='rest_framework')),
-    
+
 ]
 
 urlpatterns += router.urls

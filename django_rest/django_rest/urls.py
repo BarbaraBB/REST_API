@@ -25,20 +25,24 @@ from rest_auth.views import (
 from rest_auth.registration.views import (
     RegisterView
 )
+
+from rest_framework_swagger.renderers import SwaggerUIRenderer, OpenAPIRenderer
+from rest_framework.schemas import get_schema_view
+
 router= routers.DefaultRouter()
 router.register('users', views.UserViewSet, 'user')
-
-
+schema_view = get_schema_view(title='Users API', renderer_classes=[OpenAPIRenderer, SwaggerUIRenderer])
 
 
 
 urlpatterns = [
+    path('', schema_view, name="docs"),
     path('admin/', admin.site.urls),
     path('login/', LoginView.as_view(), name='rest_login'),
     path('register/', RegisterView.as_view(), name='rest_register'),
     path('api-auth/', include('rest_framework.urls',namespace='rest_framework')),
-    path('rest-auth/registration/', include('rest_auth.registration.urls')),
-    path('rest-auth/', include('rest_auth.urls')),
+    path('register/', include('rest_auth.registration.urls')),
+    # path('rest-auth/', include('rest_auth.urls')),
 ]
 
 urlpatterns += router.urls

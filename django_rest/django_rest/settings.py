@@ -45,7 +45,9 @@ INSTALLED_APPS = [
     'rest_auth.registration',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount'
+    'allauth.socialaccount',
+    'rest_framework_swagger',
+
 
 
 ]
@@ -149,6 +151,7 @@ SITE_ID = 1
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
+
 
 #Following is added to enable registration with email instead of username
 AUTHENTICATION_BACKENDS = (

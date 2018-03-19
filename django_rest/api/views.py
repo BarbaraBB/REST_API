@@ -7,7 +7,8 @@ from rest_auth.registration.views import RegisterView
 
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
     """
-    hjfhgfhg
+    /users returns list of all users | /users/me returns currently logged in user
+
 
     """
 
@@ -21,13 +22,17 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
 
 class MyLoginView(LoginView):
 
-      """
-      hjfhgfhg
-
-      """
+    """
+    Login user and return the REST Token
+    if the credentials are valid and authenticated.
+    Accept the following POST parameters: email, password
+    Return the REST Framework Token Object's key.
+    """
 class MyRegisterView(RegisterView):
 
-      """
-      whjgwejhgwehjr
-
-      """
+    """
+    Register new user and return the REST Token
+    if the credentials are valid and authenticated.
+    Accept the following POST parameters: username, email, password
+    Return the REST Framework Token Object's key.
+    """

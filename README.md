@@ -18,7 +18,7 @@ An example Django REST framework project.
 * **/register/** (Register new user and return the REST Token)
 
 
-### Install 
+### Install
 
     pip install -r requirements.txt
 
